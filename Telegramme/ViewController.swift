@@ -12,11 +12,6 @@ class ViewController: UIViewController {
 
     @IBOutlet var usrNameFld: UIView!
     @IBOutlet weak var pwdFld: UITextField!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
     @IBAction func onClick(_ sender: Any) {
         if true{
             let storyboard = UIStoryboard(name: "Content", bundle: nil)
@@ -24,6 +19,11 @@ class ViewController: UIViewController {
             vc.modalPresentationStyle = .fullScreen
             present(vc,animated:true,completion:nil)
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
     }
     
 }

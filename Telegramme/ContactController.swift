@@ -17,9 +17,9 @@ class ContactController {
         let entity = NSEntityDescription.entity(forEntityName: "CDContact", in: context)!
         
         let CDContact = NSManagedObject(entity: entity, insertInto: context)
-        CDContact.setValue("Yong Lun", forKey: "firstname")
-        CDContact.setValue("Wong", forKey: "lastname")
-        CDContact.setValue("11223344", forKey: "mobileno")
+        CDContact.setValue(newContact.firstName, forKey: "firstname")
+        CDContact.setValue(newContact.lastName, forKey: "lastname")
+        CDContact.setValue(newContact.mobileNo, forKey: "mobileno")
         
         do{
             try context.save()
