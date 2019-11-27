@@ -48,9 +48,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="qSM-rR-3nd"/>
                     <connections>
-                        <outlet property="onClick" destination="ut5-1v-T3x" id="lNr-oJ-Pla"/>
                         <outlet property="pwdFld" destination="e2Y-YO-CKP" id="H73-E6-C9s"/>
-                        <outlet property="usrNameFld" destination="8bC-Xf-vdC" id="T6j-d5-Q5h"/>
+                        <outlet property="usrNameFld" destination="jfZ-x1-gQ7" id="JXg-Pu-F8y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

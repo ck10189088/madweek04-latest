@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet var usrNameFld: UIView!
+    @IBOutlet weak var usrNameFld: UITextField!
     @IBOutlet weak var pwdFld: UITextField!
     @IBAction func onClick(_ sender: Any) {
         if true{
