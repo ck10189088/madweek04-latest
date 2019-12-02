@@ -79,6 +79,23 @@ class ContactController {
     }
     
     func deleteContact(mobileno:String){
+        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CDContact")
+        fetchRequest.predicate = NSPredicate(format: "mobileno = %@", mobileno)
         
+        do{
+            let result = try managedContext.fetch(fetchRequest)
+            let objdelete = result[0] as! NSManagedObject
+            managedContext.delete(objdelete)
+            
+            do{
+                try managedContext.save()
+            }catch let error as NSError{
+                print("could not delete. \(error), \(error.userInfo)")
+            }
+        }catch let error as NSError{
+            print("Could not find using mobileno, \(error),\(error.userInfo)")
+        }
     }
 }

@@ -43,4 +43,16 @@ class ShowContactViewController:UITableViewController{
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
+        print(contactList.count)
+        print(indexPath.row)
+        if editingStyle == UITableViewCell.EditingStyle.delete{
+            contactList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.middle)
+        }
+    }
+    
+    /*override func tableView(_ tableview: UITableView, didSelectRowAt indexPath: IndexPath){
+        appDelegate.rowValue = indexPath.row
+    }*/
 }
