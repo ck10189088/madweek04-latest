@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
  // these are the code for sth like recycleview in java
 class ShowContactViewController:UITableViewController{
     
@@ -52,7 +53,7 @@ class ShowContactViewController:UITableViewController{
         }
     }
     
-    /*override func tableView(_ tableview: UITableView, didSelectRowAt indexPath: IndexPath){
+    override func tableView(_ tableview: UITableView, didSelectRowAt indexPath: IndexPath){
         appDelegate.rowValue = indexPath.row
-    }*/
+    }
 }
