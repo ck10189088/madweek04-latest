@@ -28,9 +28,8 @@ class Mapviewcontroller : UIViewController{
     
     @IBOutlet weak var map: MKMapView!
     let locationDelegate = LocationDelegate()
-    var latestLocation: CLLocation? = nil
     let regionRadius: CLLocationDistance = 250
-    //let annotation = MKPointAnnotation()
+    var latestLocation :CLLocation? = nil
     
     let locationManager : CLLocationManager = {
         $0.requestWhenInUseAuthorization()
@@ -47,18 +46,24 @@ class Mapviewcontroller : UIViewController{
         locationDelegate.locationCallback = { location in self.latestLocation = location
             let lat = String(format: "Lat: %3.8f", location.coordinate.latitude)
             let long = String(format: "Long: %3.8f", location.coordinate.longitude)
-            let lastlocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            print("\(lat), \(long)")
             
             self.centerMapOnLocation(location: location)
             
-            //self.annotation.coordinate = location.coordinate
-            //self.annotation.title = "Ngee Ann Polytechnic"
-            //self.annotation.subtitle = "School of ICT"
-            //self.map.addAnnotation(self.annotation)
+            let annotation = MKPointAnnotation()
             
-            let annotation = customPin(coordinate: lastlocation, title: "Ngee Ann Polytechnic", subtitle: "School of ICT")
+            annotation.coordinate = location.coordinate
+            annotation.title = "Ngee Ann Polytechnic"
+            annotation.subtitle = "School of ICT"
             self.map.addAnnotation(annotation)
+            
+            let geocoder = CLGeocoder()
+            geocoder.geocodeAddressString("535 Clementi Road Singapore 599489", completionHandler: {p,e in
+                
+                let lat = String(format: "Lat: %3.12f", p![0].location!.coordinate.latitude)
+                let long = String(format: "Long: %3.12f", p![0].location!.coordinate.longitude)
+                
+                print("\(lat),\(long)")
+            })
         }
     }
     
